@@ -58,9 +58,12 @@ public class RegisterController {
     if(bindingResult.hasErrors())
     return "zalozkonto";
 
+
      List<User> all= userRepository.findAll();
+
         for(User u:all)
         {
+
             if(u.getLogin().equals(user.getLogin()))
             {
                 model.addAttribute("loginn","Konto o podanych Nicku juz istnieje");
@@ -72,6 +75,7 @@ public class RegisterController {
                 return "zalozkonto";
             }
         }
+
         if(user.isRegulamin1()==false || user.isRegulamin2()==false)
         {
             model.addAttribute("regulamin","Musisz zaakceptowac regulamin");
@@ -82,9 +86,11 @@ public class RegisterController {
             model.addAttribute("badLength","Hasło musi miec min 9 a max 15 znaków");
             return "zalozkonto";
         }
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userService.addwithDefaultRole(user);
 
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+        userService.addwithDefaultRole(user);
+        ;
         return "redirect:succes";
 
     }

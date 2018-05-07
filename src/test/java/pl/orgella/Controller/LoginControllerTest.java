@@ -8,35 +8,34 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import static org.junit.Assert.*;import  static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.junit.Assert.*;
+import  static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-public class TermPrivacyControllerTest {
+@RunWith(SpringJUnit4ClassRunner.class
+)
+public class LoginControllerTest {
 
     @InjectMocks
-    private TermPrivacyController privacyController;
+    private LoginController loginController;
 
     private MockMvc mockMvc;
 
     @Before
     public void setUp() throws Exception {
-        mockMvc=MockMvcBuilders.standaloneSetup(privacyController).build();
+        mockMvc= MockMvcBuilders.standaloneSetup(loginController).build();
+    }
+    @Test
+    public void failuser() throws Exception {
+        mockMvc.perform(get("/failLogin"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("failLoginForm"));
     }
 
     @Test
-    public void terms() throws Exception {
-        mockMvc.perform(get("/terms"))
+    public void login() throws Exception {
+        mockMvc.perform(get("/loginForm"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("termsForm"));
-    }
-
-
-
-    @Test
-    public void privacy() throws Exception {
-        mockMvc.perform(get("/privacy"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("privacyForm"));
+                .andExpect(view().name("loginForms"));
     }
 }

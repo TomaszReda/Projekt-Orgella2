@@ -35,18 +35,23 @@ public class MyAccountController {
 
     @PostMapping("/changePassword")
     public String change(Model model, @RequestParam String oldPassword, @RequestParam String newPassword1, @RequestParam String newPassword2) {
+
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName();
         User user = userRepository.findFirstByLogin(name);
 
+
+        System.out.println(oldPassword);
         if (!BCrypt.hashpw(oldPassword, user.getPassword()).equals(user.getPassword())) {
             model.addAttribute("badOld", "Złe hasło");
             return "MyAccountForm";
         }
+
         if (!newPassword1.equals(newPassword2)) {
             model.addAttribute("NotTheSame", "Hasła musza byc takie samo");
             return "MyAccountForm";
         }
+
         if (newPassword1.length() < 9) {
             model.addAttribute("badLength", "Hasło musi byc dłuzszse niz 9 znaków");
             return "MyAccountForm";

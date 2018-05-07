@@ -28,7 +28,6 @@ public class SearchDetailsForm {
     @GetMapping("/detailsSearch")
     public String details(Model model, @RequestParam Long ID) {
 
-
         Product product = productRepository.getOne(ID);
         List<Zdjecia> zdjecia = product.getZdjeciaSet();
         Set<String> zd = new HashSet<>();

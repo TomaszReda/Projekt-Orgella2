@@ -46,10 +46,19 @@ public class AddController {
     }
 
     @PostMapping("/add")
-    public String dodaj(@Valid @ModelAttribute Product product, BindingResult bindingResult, Model model, @RequestParam("plik[]") MultipartFile[] file) {
+    public String dodaj(@Valid @ModelAttribute Product product, BindingResult bindingResult, Model model, @RequestParam(value = "plik[]",required = false) MultipartFile[] file) {
 
 
-        int size = file.length;
+        int size ;
+
+        if(file==null) {
+            size=0;
+        }
+        else
+        {
+
+            size=file.length;
+
         if (file[0] != null) {
             if (file.length > 9) {
                 model.addAttribute("limit", "Limit zdjec to 9");
@@ -57,6 +66,7 @@ public class AddController {
             }
 
         }
+
         for (int i = 0; i < file.length; i++) {
             String images = file[i].getContentType();
 
@@ -69,6 +79,8 @@ public class AddController {
                 model.addAttribute("badExtend", "Moga byc tylko zdjecia");
                 return "addForm";
             }
+        }
+
         }
 
         if (size >= 1 && !bindingResult.hasErrors()) {
@@ -98,10 +110,12 @@ public class AddController {
         }
 
 
+        System.err.println(product);
         if (bindingResult.hasErrors()) {
+            System.err.println("ccc4"+bindingResult.getAllErrors().toString());
             return "addForm";
         }
-
+        System.err.println("CCCC5");
         productRepository.save(product);
         return "redirect:successs";
 

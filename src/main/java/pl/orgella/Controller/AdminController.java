@@ -35,8 +35,6 @@ public class AdminController {
 
     @GetMapping("/admins")
     public String admins(Model model) {
-
-
         List<Product> products = productRepository.findAll();
         model.addAttribute("products", products);
         List<User> users = userRepository.findAll();
@@ -50,6 +48,7 @@ public class AdminController {
             productRepository.deleteById(products);
 
         }
+
         return "redirect:admins";
 
     }

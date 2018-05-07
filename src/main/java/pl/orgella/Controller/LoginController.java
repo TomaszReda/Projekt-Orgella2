@@ -9,12 +9,12 @@ public class LoginController {
     @GetMapping("/failLogin")
     public String failuser()
     {
-        return "failLogin";
+        return "failLoginForm";
     }
 
     @GetMapping("/loginForm")
     public String login()
     {
-        return "loginForm";
+        return "loginForms";
     }
 }

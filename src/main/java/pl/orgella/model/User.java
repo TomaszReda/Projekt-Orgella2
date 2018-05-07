@@ -2,11 +2,10 @@ package pl.orgella.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -24,7 +23,6 @@ public class User {
     private String firstname;
     @Length(min = 3,max = 12,message = "{pl.orgella.model.User.min.3-12.message}")
     private String lastname;
-    @Email
     private String email;
     @Length(min=6,max=15,message = "{pl.orgella.model.User.min.6-12.message}")
     private String login;
@@ -37,7 +35,7 @@ public class User {
     public User() {
     }
 
-    public User(@Length(min = 3, max = 12, message = "{pl.orgella.model.User.min.3-12.message}") String firstname, @Length(min = 3, max = 12, message = "{pl.orgella.model.User.min.3-12.message}") String lastname, @Email String email, @Length(min = 6, max = 12, message = "{pl.orgella.model.User.min.6-12.message}") String login, @Length(min = 9, max = 15, message = "{pl.orgella.model.User.min.9-15.message}") String password, boolean regulamin1, boolean regulamin2) {
+    public User(@Length(min = 3, max = 12, message = "{pl.orgella.model.User.min.3-12.message}") String firstname, @Length(min = 3, max = 12, message = "{pl.orgella.model.User.min.3-12.message}") String lastname, String email, @Length(min = 6, max = 12, message = "{pl.orgella.model.User.min.6-12.message}") String login, @Length(min = 9, max = 15, message = "{pl.orgella.model.User.min.9-15.message}") String password, boolean regulamin1, boolean regulamin2) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;

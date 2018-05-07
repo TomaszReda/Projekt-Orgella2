@@ -30,8 +30,9 @@ public class SearchController {
 
 
         Page<Product> products = productRepository.findAllByKategoria(kategoria, new PageRequest(page, 10));
+        System.out.println("ccccc1");
         int ile = productRepository.findAllByKategoria(kategoria).size();
-
+        System.out.println("ccccc");
         if (ile % 10 == 0) {
             ile = ile / 10;
         } else {
