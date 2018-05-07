@@ -1,6 +1,8 @@
 package pl.orgella.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
@@ -10,6 +12,8 @@ import java.util.Set;
 
 @Data
 @Entity
+@AllArgsConstructor
+@Table(name = "users")
 public class User {
 
     @Id

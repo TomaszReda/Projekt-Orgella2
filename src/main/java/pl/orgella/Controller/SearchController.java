@@ -82,7 +82,7 @@ public class SearchController {
         } else {
             searchProducts = allProducts;
         }
-        System.err.println("search" + searchProducts);
+
 
 
         Page<Product> alls = new PageImpl<>(searchProducts, new PageRequest(page, 10), searchProducts.size());
