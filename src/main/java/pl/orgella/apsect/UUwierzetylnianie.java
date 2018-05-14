@@ -106,6 +106,22 @@ public class UUwierzetylnianie {
 
 
 
+    @After("execution(* pl.orgella.Controller.MyAccountController.*(..)) && args(model,email,aktualne)" )
+    public void info13( Model model, String email,String aktualne)
+    {
+        info1(model);
+    }
+
+    @After("execution(* pl.orgella.Controller.MyAccountController.*(..)) && args(model,login)" )
+    public void info14( Model model, String login)
+    {
+        info1(model);
+    }
+
+
+
+
+
 
 
 

@@ -64,4 +64,78 @@ public class MyAccountController {
     }
 
 
+
+
+
+
+
+    @PostMapping("/zmienLogin")
+    public String zmien( Model model,@RequestParam String login) {
+
+        System.err.println("cccccccc");
+        User users = userRepository.findFirstByLogin(login);
+        if (users != null) {
+            model.addAttribute("badLogin", "Login jest juz zajety");
+            return "MyAccountForm";
+        }
+
+        if (login.length() >= 5 && login.length() <= 15 && users == null ) {
+            System.err.println("cccccccc");
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            String name = auth.getName();
+            User user=userRepository.findFirstByLogin(name);
+            user.setLogin(login);
+            userRepository.save(user);
+            model.addAttribute("successs","Pomyslnie zmieniono login wyloguj i zaloguj sie ponownie");
+            return "MyAccountForm";
+
+        }
+
+        else {
+
+            model.addAttribute("logins", "Login powinien mieć od od 5 do 12 znaków");
+            return "MyAccountForm";
+        }
+
+
+    }
+
+
+
+
+
+
+    @PostMapping("/zmienEmail")
+    public String haslo(Model model,@RequestParam String email,@RequestParam String aktualne){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName(); //get logged in username
+
+
+        User user=userRepository.findFirstByLogin(name);
+
+        if(!BCrypt.hashpw(aktualne, user.getPassword()).equals(user.getPassword())) {
+
+            model.addAttribute("badPassowrd","Złe hasło");
+
+        }
+        User emaill = userRepository.findFirstByEmail(email);
+        if(emaill!=null)
+        {
+            model.addAttribute("badEmail","Email juz w uzyciu jest");
+
+
+        }
+        if(BCrypt.hashpw(aktualne, user.getPassword()).equals(user.getPassword()) && emaill==null)
+        {
+            model.addAttribute("succcces","Pomyslnie zmieniono email");
+            user.setEmail(email);
+            userRepository.save(user);
+        }
+
+
+
+
+        return "MyAccountForm";
+    }
+
 }

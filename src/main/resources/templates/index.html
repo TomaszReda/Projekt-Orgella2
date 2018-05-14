@@ -13,11 +13,54 @@ and open the template in the editor.
         <link href="css/newcss.css" rel="stylesheet" type="text/css"/>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"  crossorigin="anonymous" />
+
+         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <script type="text/javascript">
+        
+            var numer = Math.floor(Math.random()*5)+1;
+            
+            var timer1 = 0;
+            var timer2 = 0;
+            
+            function ustawslajd(nrslajdu)
+            {
+                clearTimeout(timer1);
+                clearTimeout(timer2);
+                numer = nrslajdu - 1;
+                
+                schowaj();
+                setTimeout("zmienslajd()", 500);
+                
+            }
+            
+            function schowaj()
+            {
+                $("#slider").fadeOut(500);
+            }
+        
+            function zmienslajd()
+            {
+                numer++; if (numer>5) numer=1;
+                
+                var plik = "<img  src=\"images/slajd" + numer + ".png\"  />";
+
+                document.getElementById("slider").innerHTML = plik;
+                $("#slider").fadeIn(500);
+                
+                timer1 = setTimeout("zmienslajd()", 5000);
+                timer2 = setTimeout("schowaj()", 4500);
+            
+            }
+            
+        </script>
     </head>
-    <body>
+    <body onload="zmienslajd()">
         <!--[if lt IE 8]>
            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
        <![endif]-->
@@ -77,7 +120,7 @@ and open the template in the editor.
 
         </nav>
         <div class="row">
-            <a th:href="@{/search?kategoria=Laptopy}"> <div class="kategoria col-md-2" >Laptopy</div></a>
+           <a th:href="@{/search?kategoria=Laptopy}"> <div class="kategoria col-md-2" >Laptopy</div></a>
             <a th:href="@{/search?kategoria=Telefony}"> <div class="kategoria col-md-2" >Telefony</div></a>
             <a th:href="@{/search?kategoria=Tablety}"> <div class="kategoria col-md-2">Tablety</div></a>
             <a th:href="@{/search?kategoria=Podzespoły_komputerowe}"> <div class="kategoria col-md-2">Podzespoły komputerowe</div></a>
@@ -92,8 +135,17 @@ and open the template in the editor.
 
         <div class="jumbotron">
             <div class="slider">
-                <br/>to wrzuci  się jakieś przewijające się obrazki<br/><br/>
-            </div>
+               <center>
+                <div id="slider" ></div> 
+            </center>
+                <center>
+                    <span  onclick="ustawslajd(1)"><i class="fa fa-circle-o" style="font-size:20px"></i></span>
+                    <span  onclick="ustawslajd(2)"><i class="fa fa-circle-o" style="font-size:20px"></i></span>
+                    <span  onclick="ustawslajd(3)"><i class="fa fa-circle-o" style="font-size:20px"></i></span>
+                    <span  onclick="ustawslajd(4)"><i class="fa fa-circle-o" style="font-size:20px"></i></span>
+                    <span  onclick="ustawslajd(5)"><i class="fa fa-circle-o" style="font-size:20px"></i></span>
+                    <span  onclick="ustawslajd(6)"><i class="fa fa-circle-o" style="font-size:20px"></i></span>
+              </center>
         </div>
 
         <div class="container">

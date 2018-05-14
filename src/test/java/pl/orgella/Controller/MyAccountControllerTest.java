@@ -56,4 +56,47 @@ public class MyAccountControllerTest {
         Mockito.when(userRepository.save(user)).thenReturn(user);
 
     }
+
+
+    @Test
+    @WithMockUser(username = "Redzikesxd3",password = "123456789")
+    public void zmienLogin() throws Exception {
+        User user=new User(10l,"tomek","redaaa","tomekreda@op.pl","Redzikesxd3","123456789",null,true,true);
+        Mockito.when(userRepository.findFirstByLogin("Redzikesxd2")).thenReturn(null);
+        Mockito.when(userRepository.findFirstByLogin("Redzikesxd3")).thenReturn(user);
+        user.setLogin("Redzikesxd2");
+        Mockito.when(userRepository.save(user)).thenReturn(user);
+        mockMvc.perform(post("/zmienLogin")
+        .param("login","Redzikexd2")
+        )
+                .andExpect(status().isOk())
+                .andExpect(view().name("MyAccountForm"));
+    }
+
+
+
+    @Test
+    @WithMockUser(username = "Redzikesxd2",password = "123456789")
+    public void badLogin() throws Exception {
+        User user=new User(10l,"tomek","redaaa","tomekreda@op.pl","Redzikesxd2","123456789",null,true,true);
+        Mockito.when(userRepository.findFirstByLogin("Redzikesxd2")).thenReturn(user);
+
+        mockMvc.perform(post("/zmienLogin")
+                .param("login","Redzikexd2")
+        )
+                .andExpect(status().isOk())
+                .andExpect(view().name("MyAccountForm"));
+    }
+
+
+
+
+    @Test
+    @WithMockUser(username = "Redzikesxd2",password = "123456789")
+    public void email() throws Exception {
+        User user=new User(10l,"tomek","redaaa","tomekreda@op.pl","Redzikesxd2","123456789",null,true,true);
+        Mockito.when(userRepository.findFirstByLogin("Redzikesxd2")).thenReturn(user);
+
+
+    }
 }

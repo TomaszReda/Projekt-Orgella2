@@ -7,6 +7,7 @@ import pl.orgella.model.User;
 @Repository
 public interface  UserRepository extends JpaRepository<User,Long> {
     User findFirstByLogin(String login);
+    User findFirstByEmail(String email);
 
 
 }
