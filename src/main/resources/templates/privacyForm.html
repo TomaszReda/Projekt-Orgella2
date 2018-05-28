@@ -37,7 +37,7 @@ and open the template in the editor.
                 <form class="form-inline navbar-form navbar-right"   th:action="@{/logmeout}" action="#" method="post">
 
                     <label class="text-danger" th:if="${user!='anonymousUser'}" th:text="${user}"></label>
-                    <button  type="submit" class="btn btn-success">wyloguj</button>
+                    <button  type="submit" class="btn btn-success">Wyloguj</button>
                 </form>
             </div>
             <div th:if="${user}=='anonymousUser'">
