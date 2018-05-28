@@ -49,4 +49,8 @@ public class User {
     private boolean regulamin1;
     private  boolean regulamin2;
 
+    @Override
+    public String toString() {
+        return userRole.toString();
+    }
 }

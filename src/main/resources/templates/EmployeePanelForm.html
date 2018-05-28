@@ -36,7 +36,7 @@ and open the template in the editor.
             <div th:if="${user}!='anonymousUser'">
                 <form class="form-inline navbar-form navbar-right"   th:action="@{/logmeout}" action="#" method="post">
                     <label class="text-danger" th:if="${user!='anonymousUser'}" th:text="${user}"></label>
-                    <button  type="submit" class="btn btn-success">Wyloguj</button>
+                    <button  type="submit" class="btn btn-success">wyloguj</button>
                 </form>
             </div>
             <div th:if="${user}=='anonymousUser'">
@@ -65,93 +65,31 @@ and open the template in the editor.
                     </div>
                 </div>
                 <a class="navbar-brand"  th:if="${admin}" th:href="@{/admins}" >Panel Administratora</a>
-                <a class="navbar-brand"  th:unless="${user}=='anonymousUser'" th:href="@{/account}" >Moje konto</a>
-                <a class="navbar-brand" th:if="${employee}" th:href="@{/employeess}" >Panel Pracownika</a>
+                <a class="navbar-brand"  th:unless="${user}=='anonymousUser'" th:href="@{/account}" >Moje konto </a>
+                 <a class="navbar-brand" th:if="${employee}" th:href="@{/employeess}" >Panel Pracownika</a>
                 <a class="navbar-brand"  th:if="${admin}"  th:href="@{/add}" >Dodaj Produkt</a>
-                <a class="navbar-brand"  th:if="${employee}"  th:href="@{/add}" >Dodaj Produkt</a>
+                 <a class="navbar-brand"  th:if="${employee}"  th:href="@{/add}" >Dodaj Produkt</a>
+
             </form>
         </div><!--/.navbar-collapse -->
     </div>
 </nav>
-
-    <div class="formularz">
-
-        <p class="text-success"  th:if="${succes}" th:text="${succes}">Plik musi być obrazkiem</p>
-        <h3>Zmień hasło</h3>
-        <form action="deleteProducts" method="post"  th:action="@{/changePassword}" >
-            <div class="form-group">
-                <p class="text-danger"  th:if="${badOld}" th:text="${badOld}">Plik musi być obrazkiem</p>
-                <label> Stare hasło:</label> <br/>
-                <input type="password" name="oldPassword" />
-            </div>
-
-
-            <div class="form-group"> <p class="text-danger"  th:if="${badLength}" th:text="${badLength}"> </p>
-                <label> Nowe hasło:</label><br/>
-            <input type="password" name="newPassword1" />
-            </div>
-
-
-            <div class="form-group">
-                <p class="text-danger"  th:if="${NotTheSame}" th:text="${NotTheSame}">Plik musi być obrazkiem</p>
-
-                <label> Powtorz hasło:</label><br/>
-            <input type="password" name="newPassword2" />
-
-
-            </div>
-            <br/><br/>
-            <button type="submit" class="btn btn-lg btn-block btn-success">Zmień hasło</button>
-        </form>
-
-    </div>
-</div>
-
-
-
-
+<div th:if="${!products.isEmpty()}">
 <div class="formularz">
 
-    <h3>Zmień Email</h3>
-    <form action="deleteProducts" method="post"  th:action="@{/zmienEmail}" >
-        <div class="form-group">
-            <p class="text-danger"  th:if="${badPassowrd}" th:text="${badPassowrd}">Plik musi być obrazkiem</p>
-            <p class="text-danger"  th:if="${badEmail}" th:text="${badEmail}">Plik musi być obrazkiem</p>
-            <p class="text-success"  th:if="${succcces}" th:text="${succcces}">Plik musi być obrazkiem</p>
-            <label> Nowy email:</label> <br/>
-            <input type="email" name="email" />
-        </div>
-        <div class="form-group">
-            <label> Hasło:</label><br/>
-            <input type="password" name="aktualne" />
-        </div>
+
+    <h3>Usun produkt</h3>
+    <form action="deleteProducts" method="post"  th:action="@{/deleteProductss}" >
+        <select name="products" >
+            <option th:each="p: ${products}"  th:text="${p.header}" th:value="${p.ID}">Volvo</option>
+        </select>
         <br/><br/>
-        <button type="submit" class="btn btn-lg btn-block btn-success">Zmień Email</button>
+        <button type="submit" class="btn btn-lg btn-block btn-success">Usun produkt</button>
     </form>
 
-
+</div>
 </div>
 
-
-
-
-<div class="formularz">
-
-    <h3>Zmień Login</h3>
-    <form action="deleteProducts" method="post"  th:action="@{/zmienLogin}" >
-        <div class="form-group">
-            <p class="text-danger"  th:if="${logins}" th:text="${logins}">Plik musi być obrazkiem</p>
-            <p class="text-danger"  th:if="${badLogin}" th:text="${badLogin}">Plik musi być obrazkiem</p>
-            <p class="text-success"  th:if="${successs}" th:text="${successs}">Plik musi być obrazkiem</p>
-            <label> Login:</label> <br/>
-            <input type="text" name="login" />
-        </div>
-        <br/><br/>
-        <button type="submit" class="btn btn-lg btn-block btn-success">Zmień Login</button>
-    </form>
-
-
-</div>
 
 
 

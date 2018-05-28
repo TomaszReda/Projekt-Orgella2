@@ -29,10 +29,17 @@ public class UUwierzetylnianie {
         model.addAttribute("user",name);
         Collection<? extends GrantedAuthority> all=auth.getAuthorities();
         GrantedAuthority admins=new SimpleGrantedAuthority("ADMIN_ROLE");
+        GrantedAuthority employee=new SimpleGrantedAuthority("PRAC_ROLE");
         if(all.contains(admins))
         {
             model.addAttribute("admin","admin");
         }
+        if(all.contains(employee)) {
+        	model.addAttribute("employee","employee");
+        }
+        
+        
+        
     }
 
 
@@ -117,7 +124,18 @@ public class UUwierzetylnianie {
     {
         info1(model);
     }
+    
+    @After("execution(* pl.orgella.Controller.EmployeeController.*(..)) && args(products,model)" )
+    public void info15( long products,Model model)
+    {
+        info1(model);
+    }
 
+    @After("execution(* pl.orgella.Controller.EmployeeController.*(..)) && args(model)" )
+    public void info16( Model model)
+    {
+        info1(model);
+    }
 
 
 
