@@ -36,7 +36,7 @@ and open the template in the editor.
             <div th:if="${user}!='anonymousUser'">
                 <form class="form-inline navbar-form navbar-right"   th:action="@{/logmeout}" action="#" method="post">
                     <label class="text-danger" th:if="${user!='anonymousUser'}" th:text="${user}"></label>
-                    <button  type="submit" class="btn btn-success">Wyloguj</button>
+                    <button  type="submit" class="btn btn-success">wyloguj</button>
                 </form>
             </div>
             <div th:if="${user}=='anonymousUser'">
@@ -66,9 +66,7 @@ and open the template in the editor.
                 </div>
                 <a class="navbar-brand"  th:if="${admin}" th:href="@{/admins}" >Panel Administratora</a>
                 <a class="navbar-brand"  th:unless="${user}=='anonymousUser'" th:href="@{/account}" >Moje konto </a>
-                <a class="navbar-brand" th:if="${employee}" th:href="@{/employeess}" >Panel Pracownika</a>
                 <a class="navbar-brand"  th:if="${admin}"  th:href="@{/add}" >Dodaj Produkt</a>
-                <a class="navbar-brand"  th:if="${employee}"  th:href="@{/add}" >Dodaj Produkt</a>
             </form>
         </div><!--/.navbar-collapse -->
     </div>
@@ -77,9 +75,9 @@ and open the template in the editor.
 <div class="formularz">
 
     <form action="/add" method="post" enctype="multipart/form-data" th:action="@{/add}" th:object="${product}">
-        <h3>Dodaj Produkt</h3>
-        <p class="text-danger"  th:if="${badExtend}" th:text="${badExtend}">Plik musi być obrazkiem</p>
-        <p class="text-danger"  th:if="${limit}" th:text="${limit}">Można dodać maksymalnie 9 zdjeć</p>
+        <h3>Dodaj Product</h3>
+        <p class="text-danger"  th:if="${badExtend}" th:text="${badExtend}">Plik musi byc obrazkiem</p>
+        <p class="text-danger"  th:if="${limit}" th:text="${limit}">Mozna dodac maks 9 zdjec</p>
         <div class="form-group">
             <label> Zdjecia:</label>
             <input type="file" name="plik[]"  multiple="multiple" />
@@ -87,8 +85,8 @@ and open the template in the editor.
 
         <p  class="alert alert-danger" th:errors="*{header}" >Błędne dane!</p>
         <div class="form-group">
-            <label >Nagłówek:</label>
-            <input type="text" placeholder="Nagłówek"  th:field="*{header}" class="form-control">
+            <label >Nagłowek:</label>
+            <input type="text" placeholder="Naglowek"  th:field="*{header}" class="form-control">
         </div>
 
 
@@ -121,7 +119,7 @@ and open the template in the editor.
             <input type="number" placeholder="Cena"  th:field="*{cena}" class="form-control">
         </div>
 
-        <button type="submit" class="btn btn-lg btn-block btn-success">Dodaj produkt</button>
+        <button type="submit" class="btn btn-lg btn-block btn-success">Dodaj product</button>
     </form>
 </div>
 <hr>

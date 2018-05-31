@@ -36,7 +36,7 @@ and open the template in the editor.
             <div th:if="${user}!='anonymousUser'">
                 <form class="form-inline navbar-form navbar-right"   th:action="@{/logmeout}" action="#" method="post">
                     <label class="text-danger" th:if="${user!='anonymousUser'}" th:text="${user}"></label>
-                    <button  type="submit" class="btn btn-success">wyloguj</button>
+                    <button  type="submit" class="btn btn-success">Wyloguj</button>
                 </form>
             </div>
             <div th:if="${user}=='anonymousUser'">
@@ -67,9 +67,7 @@ and open the template in the editor.
                 </div>
                 <a class="navbar-brand"  th:if="${admin}" th:href="@{/admins}" >Panel Administratora</a>
                 <a class="navbar-brand"  th:unless="${user}=='anonymousUser'" th:href="@{/account}" >Moje konto </a>
-                <a class="navbar-brand" th:if="${employee}" th:href="@{/employeess}" >Panel Pracownika</a>
                 <a class="navbar-brand"  th:if="${admin}"  th:href="@{/add}" >Dodaj Produkt</a>
-                <a class="navbar-brand"  th:if="${employee}"  th:href="@{/add}" >Dodaj Produkt</a>
             </form>
 
 
@@ -118,7 +116,7 @@ and open the template in the editor.
                 <td><a href="#" th:href="@{/terms}" >Regulamin</a></td>
             </tr>
             <tr>
-                <td><a href="#" th:href="@{/privacy}">Warunki Prywatnosci</a></td>
+                <td><a href="#" th:href="@{/privacy}">Warunki Prywatności</a></td>
             </tr>
             </tbody>
         </table>

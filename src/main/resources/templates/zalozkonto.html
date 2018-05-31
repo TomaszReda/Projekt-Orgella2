@@ -71,8 +71,8 @@ and open the template in the editor.
                     <p  class="alert alert-danger" th:errors="*{firstname}" >Błędne dane!</p>
 
                 <div class="form-group">
-                    <label for="formularz-data">Imie:</label>
-                    <input type="text" placeholder="Imie..."  th:field="*{firstname}" class="form-control">
+                    <label for="formularz-data">Imię:</label>
+                    <input type="text" placeholder="Imię..."  th:field="*{firstname}" class="form-control">
                 </div>
 
                     <p class="alert alert-danger" th:errors="*{lastname}" >Błędne dane!</p>
@@ -83,14 +83,14 @@ and open the template in the editor.
                 </div>
 
                     <p class="alert alert-danger" th:errors="*{login}" >Błędne dane!</p>
-                   <p class="alert alert-danger" th:if="${loginn}"> Konto z tym loginem juz istnieje</p>
+                   <p class="alert alert-danger" th:if="${loginn}"> Konto z tym loginem już istnieje</p>
                 <div class="form-group">
                     <label for="formularz-data">Login:</label>
                     <input id="formularz-data" type="text"  th:field="*{login}" placeholder="Login..." class="form-control">
                 </div>
 
                     <p class="alert alert-danger" th:errors="*{email}" >Błędne dane!</p>
-                    <p class="alert alert-danger" th:if="${emaill}"> Konto z tym emailem juz istnieje</p>
+                    <p class="alert alert-danger" th:if="${emaill}"> Konto z tym emailem już istnieje</p>
                 <div class="form-group">
                     <label for="formularz-email">Email:</label>
                     <input id="formularz-email" type="email" th:field="*{email}" placeholder="Email" class="form-control">
@@ -105,10 +105,10 @@ and open the template in the editor.
 
                 <p class="alert alert-danger"  th:if="${regulamin}" th:text="${regulamin}"></p>
                 <div class="checkbox">
-                    <label><input type="checkbox" th:field="*{regulamin1}" value=""><a th:href="@{/terms}"> pierwsze pierdoły o umowach i regulaminach których i tak nikt nie czyta</a> </label>
+                    <label><input type="checkbox" th:field="*{regulamin1}" value=""><a th:href="@{/terms}"> Zaakceptuj regulamin i sprzedaj nam swoją dusze i nerkę.</a> </label>
                 </div>
                 <div class="checkbox">
-                    <label><input th:field="*{regulamin2}" type="checkbox" value=""><a th:href="@{/privacy}">drugie pierdoły o umowach i regulaminach których i tak nikt nie czyta</a> </label>
+                    <label><input th:field="*{regulamin2}" type="checkbox" value=""><a th:href="@{/privacy}"> Zaakceptuj warunki prywatności, dzięki którym będziemy mogli cię dokładniej obserwować w miejscach na które nie mieliśmy pozwolenia, ale o tym się dowiesz po przeczytaniu całości.</a> </label>
                 </div>
 
                 <button type="submit" class="btn btn-lg btn-block btn-success">Zakładam konto</button>
@@ -130,7 +130,7 @@ and open the template in the editor.
                 <td><a href="#" th:href="@{/terms}" >Regulamin</a></td>
             </tr>
             <tr>
-                <td><a href="#" th:href="@{/privacy}">Warunki Prywatnosci</a></td>
+                <td><a href="#" th:href="@{/privacy}">Warunki Prywatności</a></td>
             </tr>
             </tbody>
         </table>

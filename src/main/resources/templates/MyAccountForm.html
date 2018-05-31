@@ -36,7 +36,7 @@ and open the template in the editor.
             <div th:if="${user}!='anonymousUser'">
                 <form class="form-inline navbar-form navbar-right"   th:action="@{/logmeout}" action="#" method="post">
                     <label class="text-danger" th:if="${user!='anonymousUser'}" th:text="${user}"></label>
-                    <button  type="submit" class="btn btn-success">Wyloguj</button>
+                    <button  type="submit" class="btn btn-success">wyloguj</button>
                 </form>
             </div>
             <div th:if="${user}=='anonymousUser'">
@@ -65,10 +65,8 @@ and open the template in the editor.
                     </div>
                 </div>
                 <a class="navbar-brand"  th:if="${admin}" th:href="@{/admins}" >Panel Administratora</a>
-                <a class="navbar-brand"  th:unless="${user}=='anonymousUser'" th:href="@{/account}" >Moje konto</a>
-                <a class="navbar-brand" th:if="${employee}" th:href="@{/employeess}" >Panel Pracownika</a>
+                <a class="navbar-brand"  th:unless="${user}=='anonymousUser'" th:href="@{/account}" >Moje konto </a>
                 <a class="navbar-brand"  th:if="${admin}"  th:href="@{/add}" >Dodaj Produkt</a>
-                <a class="navbar-brand"  th:if="${employee}"  th:href="@{/add}" >Dodaj Produkt</a>
             </form>
         </div><!--/.navbar-collapse -->
     </div>
@@ -77,7 +75,7 @@ and open the template in the editor.
     <div class="formularz">
 
         <p class="text-success"  th:if="${succes}" th:text="${succes}">Plik musi być obrazkiem</p>
-        <h3>Zmień hasło</h3>
+        <h3>Zmien hasło</h3>
         <form action="deleteProducts" method="post"  th:action="@{/changePassword}" >
             <div class="form-group">
                 <p class="text-danger"  th:if="${badOld}" th:text="${badOld}">Plik musi być obrazkiem</p>
@@ -95,7 +93,7 @@ and open the template in the editor.
             <div class="form-group">
                 <p class="text-danger"  th:if="${NotTheSame}" th:text="${NotTheSame}">Plik musi być obrazkiem</p>
 
-                <label> Powtorz hasło:</label><br/>
+                <label> Powtórz hasło:</label><br/>
             <input type="password" name="newPassword2" />
 
 
@@ -122,7 +120,7 @@ and open the template in the editor.
             <input type="email" name="email" />
         </div>
         <div class="form-group">
-            <label> Hasło:</label><br/>
+            <label> hasło:</label><br/>
             <input type="password" name="aktualne" />
         </div>
         <br/><br/>
@@ -170,7 +168,7 @@ and open the template in the editor.
                 <td><a href="#" th:href="@{/terms}" >Regulamin</a></td>
             </tr>
             <tr>
-                <td><a href="#" th:href="@{/privacy}">Warunki Prywatnosci</a></td>
+                <td><a href="#" th:href="@{/privacy}">Warunki Prywatności</a></td>
             </tr>
             </tbody>
         </table>

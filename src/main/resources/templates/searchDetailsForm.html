@@ -70,9 +70,7 @@ and open the template in the editor.
                 </div>
                 <a class="navbar-brand"  th:if="${admin}" th:href="@{/admins}" >Panel Administratora</a>
                 <a class="navbar-brand"  th:unless="${user}=='anonymousUser'" th:href="@{/account}" >Moje konto </a>
-                <a class="navbar-brand" th:if="${employee}" th:href="@{/employeess}" >Panel Pracownika</a>
                 <a class="navbar-brand"  th:if="${admin}"  th:href="@{/add}" >Dodaj Produkt</a>
-                <a class="navbar-brand"  th:if="${employee}"  th:href="@{/add}" >Dodaj Produkt</a>
             </form>
 
 
@@ -99,7 +97,7 @@ and open the template in the editor.
                 </tr>
 
                 <tr>
-                    <th>Kategoria</th><td th:text="*{kategoria}"></td>
+                    <th>kategoria</th><td th:text="*{kategoria}"></td>
                 </tr>
                 <tr>
                     <th>Cena</th><td th:text="*{cena}"></td>
@@ -126,7 +124,7 @@ and open the template in the editor.
                     <div th:each="z: ${zdjecia}">
                         <div class="col-md-4" >
                             <div class="thumbnail">
-                                <a  th:href="${z}" data-lightbox="example-1"> <img  th:src="${z}" alt="Zdjecie się ładuje" style="width:100%" /></a>
+                                <a  th:href="${z}" data-lightbox="example-1"> <img  th:src="${z}" alt="Zdjęcie się ładuje" style="width:100%" /></a>
                             </div>
                         </div>
                     </div>
@@ -154,7 +152,7 @@ and open the template in the editor.
                 <td><a href="#" th:href="@{/terms}" >Regulamin</a></td>
             </tr>
             <tr>
-                <td><a href="#" th:href="@{/privacy}">Warunki Prywatnosci</a></td>
+                <td><a href="#" th:href="@{/privacy}">Warunki Prywatności</a></td>
             </tr>
             </tbody>
         </table>
