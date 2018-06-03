@@ -30,6 +30,7 @@ public class UUwierzetylnianie {
         Collection<? extends GrantedAuthority> all=auth.getAuthorities();
         GrantedAuthority admins=new SimpleGrantedAuthority("ADMIN_ROLE");
         GrantedAuthority employee=new SimpleGrantedAuthority("PRAC_ROLE");
+        System.out.println(all);
         if(all.contains(admins))
         {
             model.addAttribute("admin","admin");
