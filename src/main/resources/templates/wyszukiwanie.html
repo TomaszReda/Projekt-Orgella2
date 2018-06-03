@@ -60,7 +60,9 @@ and open the template in the editor.
                 </div>
                 <a class="navbar-brand"  th:if="${admin}" th:href="@{/admins}" >Panel Administratora</a>
                 <a class="navbar-brand"  th:unless="${user}=='anonymousUser'" th:href="@{/account}" >Moje konto </a>
+                <a class="navbar-brand" th:if="${employee}" th:href="@{/employeess}" >Panel Pracownika</a>
                 <a class="navbar-brand"  th:if="${admin}"  th:href="@{/add}" >Dodaj Produkt</a>
+                <a class="navbar-brand"  th:if="${employee}"  th:href="@{/add}" >Dodaj Produkt</a>
             </form>
         </div><!--/.navbar-collapse -->
     </div>
