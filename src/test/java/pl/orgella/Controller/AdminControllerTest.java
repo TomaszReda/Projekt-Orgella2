@@ -42,24 +42,6 @@ public class AdminControllerTest {
         mockMvc= MockMvcBuilders.standaloneSetup(adminController).build();
     }
 
-    @Test
-    @WithMockUser(username = "Administrator")
-    public void admins() throws Exception {
-        User user=new User(10l,"tomek","redaaa","tomekreda@op.pl","Administrator","123456789a",null,true,true);
-        Product product=new Product(10L,"headdderrrr","asadadadssadasda",30,"sklep",null);
-        List<User> add=new LinkedList<>();
-        List<Product> all=new LinkedList<>();
-        add.add(user);
-        all.add(product);
-
-        Mockito.when(userRepository.findAll()).thenReturn(add);
-        Mockito.when(productRepository.findAll()).thenReturn(all);
-
-    mockMvc.perform(get("/admins"))
-            .andExpect(status().isOk())
-            .andExpect(view().name("AdminPanelForm"));
-
-    }
 
     @Test
     @WithMockUser(username = "Administrator")
